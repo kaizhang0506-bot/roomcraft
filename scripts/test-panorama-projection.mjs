@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import path from 'node:path';
+import { mkdir } from 'node:fs/promises';
+import { pathToFileURL } from 'node:url';
+import { build } from 'esbuild';
+const root = path.resolve(import.meta.dirname, '..'), output = path.join(root, '.sites-runtime/panorama-projection-check');
+await mkdir(output, { recursive: true });
+await build({ entryPoints: [path.join(root, 'lib/panorama-projection.ts')], outdir: output, bundle: true, platform: 'node', format: 'esm', outExtension: { '.js': '.mjs' }, logLevel: 'silent' });
+const { perspectiveToEquirectangular: project, normalizePanoramaPose: normalize, createPanoramaRays, renderPanoramaPixels, DEFAULT_PANORAMA_POSE: defaults } = await import(pathToFileURL(path.join(output, 'panorama-projection.mjs')).href);
+const checks = [], check = (name, run) => { run(); checks.push(name); }, near = (a, b) => assert.ok(Math.abs(a - b) < 1e-6, `${a} != ${b}`);
+check('front view samples panorama centre', () => { const uv = project(0, 0, 16 / 9, defaults); near(uv.u, .5); near(uv.v, .5); });
+check('yaw changes longitude and wraps a full revolution', () => { near(project(0, 0, 1, { ...defaults, yaw: Math.PI / 2 }).u, .75); near(project(0, 0, 1, { ...defaults, yaw: 2 * Math.PI }).u, .5); near(project(0, 0, 1, { ...defaults, yaw: -Math.PI / 2 }).u, .25); });
+check('pitch changes latitude rather than scrolling a rectangular crop', () => { near(project(0, 0, 1, { ...defaults, pitch: Math.PI / 4 }).v, .25); near(project(0, 0, 1, { ...defaults, pitch: -Math.PI / 4 }).v, .75); });
+check('field of view changes perspective ray coverage', () => assert.ok(project(.8, 0, 1.5, { ...defaults, fov: 100 }).u > project(.8, 0, 1.5, { ...defaults, fov: 40 }).u));
+check('portrait viewport preserves horizontal field of view and changes vertical coverage', () => assert.ok(project(0, .8, .6, defaults).v < project(0, .8, 2, defaults).v));
+check('pose and allocation limits reject dangerous inputs', () => { assert.deepEqual(normalize({ yaw: NaN, pitch: Infinity, fov: NaN }), defaults); assert.equal(normalize({ ...defaults, fov: 200 }).fov, 110); assert.ok(normalize({ ...defaults, pitch: 99 }).pitch < Math.PI / 2); assert.throws(() => createPanoramaRays(2000, 2000, 75)); assert.throws(() => project(0, 0, 0, defaults)); });
+const width = 8, height = 4, data = new Uint8ClampedArray(width * height * 4);
+for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) { const i = (y * width + x) * 4; data[i] = x * 30; data[i + 1] = y * 60; data[i + 2] = 100; data[i + 3] = 255; }
+const source = { width, height, data }, oneRay = createPanoramaRays(1, 1, 75);
+check('rendering maps different camera yaws to different actual image pixels', () => { const front = renderPanoramaPixels(source, oneRay, defaults, false), right = renderPanoramaPixels(source, oneRay, { ...defaults, yaw: Math.PI / 2 }, false); assert.deepEqual([...front], [120, 120, 100, 255]); assert.deepEqual([...right], [180, 120, 100, 255]); });
+check('bilinear interpolation wraps at the horizontal seam instead of drawing black', () => { const atSeam = renderPanoramaPixels(source, oneRay, { ...defaults, yaw: Math.PI }); assert.deepEqual([...atSeam], [105, 90, 100, 255]); });
+check('near-pole samples remain within source image bounds', () => { const output = renderPanoramaPixels(source, createPanoramaRays(31, 51, 110), { ...defaults, pitch: 1.4 }); for (let i = 3; i < output.length; i += 4) assert.equal(output[i], 255); });
+check('invalid source pixel buffers fail clearly', () => assert.throws(() => renderPanoramaPixels({ width: 8, height: 4, data: new Uint8ClampedArray(3) }, oneRay, defaults)));
+console.log(JSON.stringify({ status: 'passed', checks: checks.length, cases: checks }, null, 2));

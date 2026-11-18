@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {createRequire} from 'node:module';
+import {pathToFileURL} from 'node:url';
+import path from 'node:path';
+const require=createRequire(import.meta.url),{build}=require('esbuild');
+const output=path.resolve('.sites-runtime/meltflex-world-test.mjs');
+await build({entryPoints:['lib/meltflex-world.ts'],bundle:true,platform:'node',format:'esm',outfile:output});
+const {submitWorld,pollWorld}=await import(pathToFileURL(output));
+const secret='test-key-never-real',actor='user-a',body={image:'data:image/png;base64,iVBORw0KGgo=',requestId:'unique-test-request-1',confirmedCost:30};let calls=0;
+const fake=async(url,init)=>{calls++;assert.equal(String(url),'https://www.meltflexai.com/api/v1/world');assert.equal(init.method,'POST');assert.equal(init.redirect,'error');assert.equal(JSON.parse(init.body).model,'draft');return Response.json({done:false,status:'IN_PROGRESS',operationId:'op_sample',pollUrl:'http://127.0.0.1/private'}, {status:202});};
+await assert.rejects(()=>submitWorld(body,actor,'',fake),e=>e.status===503);await assert.rejects(()=>submitWorld({...body,confirmedCost:0},actor,secret,fake),e=>e.status===400);
+const submitted=await submitWorld(body,actor,secret,fake);assert.equal(submitted.status,'processing');assert.equal(calls,1);assert.deepEqual(await submitWorld(body,actor,secret,fake),submitted);assert.equal(calls,1);
+await assert.rejects(()=>submitWorld({...body,image:'data:image/png;base64,iVBORw0KGgphYmM='},actor,secret,fake),e=>e.status===409);
+let fetched=false;await assert.rejects(()=>pollWorld('operation',submitted.taskId,submitted.taskToken,'user-b',secret,async()=>{fetched=true;throw Error()}),e=>e.status===403);assert.equal(fetched,false);
+const complete=await pollWorld('operation',submitted.taskId,submitted.taskToken,actor,secret,async(url,init)=>{assert.equal(String(url),'https://www.meltflexai.com/api/v1/world?operationId=op_sample');assert.equal(init.redirect,'error');return Response.json({done:true,success:true,worldId:'world_123',viewerUrl:'https://marble.worldlabs.ai/world/world_123'});});assert.equal(complete.status,'succeeded');
+await assert.rejects(()=>pollWorld('operation',submitted.taskId,submitted.taskToken,actor,secret,async()=>Response.json({done:true,success:true,worldId:'world_123',viewerUrl:'https://evil.example/world/x'})),e=>e.status===502);
+let attempts=0;const broken=async()=>{attempts++;throw Error('connection lost')};const pending={...body,requestId:'unknown-test-request-2'};await assert.rejects(()=>submitWorld(pending,actor,secret,broken),e=>e.status===502);await assert.rejects(()=>submitWorld(pending,actor,secret,broken),e=>e.status===502);assert.equal(attempts,1);
+console.log(JSON.stringify({status:'passed',checks:8,paidRequests:0}));

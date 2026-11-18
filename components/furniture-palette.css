@@ -1,0 +1,23 @@
+.inspector-tabs.three-tabs{grid-template-columns:repeat(3,minmax(0,1fr));padding:0 8px}
+.inspector-tabs.three-tabs button{gap:4px;white-space:nowrap}
+.inspector-tabs.three-tabs button.active:after{left:10px;right:10px}
+.catalog-tabs{display:flex;gap:6px;padding:4px;background:#f1f5ea;border-radius:7px;margin:0 0 16px}
+.catalog-tabs button{flex:1;display:flex;justify-content:center;align-items:center;gap:6px;padding:9px;color:#788b68;font-size:11px;border-radius:5px}
+.catalog-tabs button[aria-pressed=true]{background:white;color:#526e40;box-shadow:0 1px 4px #25351a17}
+.catalog-room{display:flex;align-items:center;gap:8px;font-size:10px;color:#70845f;margin-bottom:9px}
+.catalog-room select{min-width:0;flex:1;padding:8px;border:1px solid #d7e0cb;border-radius:5px;background:#fffef9;color:#4d6142}
+.catalog-hint{font-size:10px;line-height:1.7;color:#87977a;margin:8px 0 12px}
+.catalog-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.catalog-grid button{position:relative;display:flex;flex-direction:column;align-items:flex-start;text-align:left;border:1px solid #e0e8d7;border-radius:6px;background:#fffefa;padding:9px;min-width:0}
+.catalog-grid button:hover,.catalog-grid button:focus-visible{border-color:#9db48a;background:#f6f9f0}
+.catalog-symbol{display:grid;place-items:center;width:100%;height:49px;background:#f2efe7;border-radius:4px;color:#97816c;font-size:28px;line-height:1}
+.catalog-grid strong{font-size:11px;font-weight:500;color:#4d6242;margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.catalog-grid small{font-size:9px;color:#94a48a;margin-top:4px}
+.catalog-plus{position:absolute;right:9px;bottom:8px;color:#819b70}
+.scene-catalog .material-library .modal-description{font-size:10px}
+.scene-catalog .material-library-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.scene-catalog .material-swatch{height:60px}
+.scene-catalog .material-target{gap:7px;margin:12px 0}
+.scene-catalog .material-target>select{width:0}
+.scene-catalog .correction-tabs{margin:10px 0}
+.scene-catalog .correction-tabs>button{padding:7px 9px}

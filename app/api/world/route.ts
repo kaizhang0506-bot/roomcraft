@@ -1,0 +1,5 @@
+import {authorize,errorResponse,json,readBody,requestActor} from '../../../lib/ai-server';
+import {setting} from '../../../lib/server-env';
+import {pollWorld,submitWorld} from '../../../lib/meltflex-world';
+export async function POST(request:Request){let release:(()=>void)|undefined;try{release=authorize(request);const result=await submitWorld(await readBody(request),requestActor(request),setting('MELTFLEX_API_KEY'));return json(result,result.status==='processing'?202:200);}catch(error){return errorResponse(error);}finally{release?.();}}
+export async function GET(request:Request){let release:(()=>void)|undefined;try{release=authorize(request);const params=new URL(request.url).searchParams;if(params.get('status')==='1')return json({configured:!!setting('MELTFLEX_API_KEY'),draftCredits:30,provider:'MeltFlex'});return json(await pollWorld(params.get('kind')||'operation',params.get('id')||'',request.headers.get('x-roomcraft-task-token')||'',requestActor(request),setting('MELTFLEX_API_KEY')));}catch(error){return errorResponse(error);}finally{release?.();}}

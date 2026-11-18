@@ -1,0 +1,144 @@
+{
+  "assets": [
+    {
+      "file": "chair.glb",
+      "bytes": 4125648,
+      "sha256": "f0af2a2b102d28d540236306ae19f8fb36842df76bd38cf76f063f9bd2853399",
+      "credit": "Wayfair, LLC (2020), Eric Chadwick",
+      "license": "CC0-1.0",
+      "source": "https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/SheenChair",
+      "url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/SheenChair/glTF-Binary/SheenChair.glb"
+    },
+    {
+      "file": "marble-color.jpg",
+      "bytes": 305029,
+      "sha256": "b10dabea976d68baa976a0d4e8dac58789df8d26a1b50697f320106f1b00a229",
+      "credit": "Poly Haven contributors",
+      "license": "CC0-1.0",
+      "source": "https://polyhaven.com/a/marble_01",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/marble_01/marble_01_diff_1k.jpg"
+    },
+    {
+      "file": "marble-normal.jpg",
+      "bytes": 110230,
+      "sha256": "77c2a9b549a6a408659f8197be91945aeb0abc33e697f1dd2ce24ee8dc7c2bc0",
+      "credit": "Poly Haven contributors",
+      "license": "CC0-1.0",
+      "source": "https://polyhaven.com/a/marble_01",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/marble_01/marble_01_nor_gl_1k.jpg"
+    },
+    {
+      "file": "marble-roughness.jpg",
+      "bytes": 91848,
+      "sha256": "a3e9f373d22aebc449af73f6a18c9817e2146f17e567a083609ba8fbb62a72f5",
+      "credit": "Poly Haven contributors",
+      "license": "CC0-1.0",
+      "source": "https://polyhaven.com/a/marble_01",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/marble_01/marble_01_rough_1k.jpg"
+    },
+    {
+      "file": "oak-color.jpg",
+      "bytes": 721641,
+      "sha256": "c112a8fb107d8600a2974af2f9fa9b595c491a33a59982e22706e9650990bf8f",
+      "credit": "Poly Haven contributors",
+      "license": "CC0-1.0",
+      "source": "https://polyhaven.com/a/laminate_floor_02",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/laminate_floor_02/laminate_floor_02_diff_1k.jpg"
+    },
+    {
+      "file": "oak-normal.jpg",
+      "bytes": 515725,
+      "sha256": "ec501e1c76269cabc1648ab0e3f38db1b062ffef7ff4ce037fdc369383afd005",
+      "credit": "Poly Haven contributors",
+      "license": "CC0-1.0",
+      "source": "https://polyhaven.com/a/laminate_floor_02",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/laminate_floor_02/laminate_floor_02_nor_gl_1k.jpg"
+    },
+    {
+      "file": "oak-roughness.jpg",
+      "bytes": 560815,
+      "sha256": "1d48d21a8497d83d4148e4378bf6891e052c98b58cdce1f79003bcc24a3aff8f",
+      "credit": "Poly Haven contributors",
+      "license": "CC0-1.0",
+      "source": "https://polyhaven.com/a/laminate_floor_02",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/laminate_floor_02/laminate_floor_02_rough_1k.jpg"
+    },
+    {
+      "file": "plaster-color.jpg",
+      "bytes": 436395,
+      "sha256": "0a316ffd3f953a902325c06afb5a5863bbf71d13a353f9d85378562adca79603",
+      "credit": "Poly Haven contributors",
+      "license": "CC0-1.0",
+      "source": "https://polyhaven.com/a/plastered_wall_02",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/plastered_wall_02/plastered_wall_02_diff_1k.jpg"
+    },
+    {
+      "file": "plaster-normal.jpg",
+      "bytes": 960241,
+      "sha256": "0f1b4ea0c4707ea133f133c020923bddd8610a43a153281dad15d49f39ad9624",
+      "credit": "Poly Haven contributors",
+      "license": "CC0-1.0",
+      "source": "https://polyhaven.com/a/plastered_wall_02",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/plastered_wall_02/plastered_wall_02_nor_gl_1k.jpg"
+    },
+    {
+      "file": "plaster-roughness.jpg",
+      "bytes": 173930,
+      "sha256": "6c317c0e647b02259601690bd33501bbc825858c6d1715cd0f8f46a5b51f6db4",
+      "credit": "Poly Haven contributors",
+      "license": "CC0-1.0",
+      "source": "https://polyhaven.com/a/plastered_wall_02",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/plastered_wall_02/plastered_wall_02_rough_1k.jpg"
+    },
+    {
+      "file": "sofa.glb",
+      "bytes": 10107912,
+      "sha256": "5349e042ad41e695e89f1110230c4ee0c75b2bc62ef830c7016be6ecf665bfb6",
+      "credit": "Darmstadt Graphics Group GmbH (2024), Eric Chadwick; original Fran Calvente (2021)",
+      "license": "CC-BY-4.0 (improvements); CC0-1.0 (original)",
+      "source": "https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/SheenWoodLeatherSofa",
+      "url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/SheenWoodLeatherSofa/glTF-Binary/SheenWoodLeatherSofa.glb"
+    },
+    {
+      "file": "studio.hdr",
+      "bytes": 1648130,
+      "sha256": "469abc5e6035b6c450bae8adbb448f8d1fa7c51d9e384e501516c28352c91b58",
+      "credit": "Poly Haven contributors",
+      "license": "CC0-1.0",
+      "source": "https://polyhaven.com/a/brown_photostudio_02",
+      "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/brown_photostudio_02_1k.hdr"
+    },
+    {
+      "file": "garden-daylight.hdr",
+      "bytes": 6591186,
+      "sha256": "01ee12eae82eddb9fd01d428217ce50c6b9e54e5332f2c428abd52cea46b120b",
+      "credit": "Poly Haven",
+      "license": "CC0-1.0",
+      "source": "https://polyhaven.com/a/green_point_park",
+      "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/green_point_park_2k.hdr"
+    },
+    {
+      "file": "linen-normal.jpg",
+      "bytes": 828071,
+      "sha256": "f6955bbdead9f023f2357f6f8808ed49627d10882cd2a3cb6b5a5ace155abc45",
+      "credit": "Poly Haven",
+      "license": "CC0-1.0",
+      "source": "https://polyhaven.com/a/fabric_pattern_07",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/fabric_pattern_07/fabric_pattern_07_nor_gl_1k.jpg"
+    },
+    {
+      "file": "linen-weave.jpg",
+      "bytes": 416307,
+      "sha256": "79f8a7ea29a3bba8215e06ad2bf4bdce15fa96bbc9052e1a947397940a168c9b",
+      "credit": "Poly Haven",
+      "license": "CC0-1.0",
+      "source": "https://polyhaven.com/a/fabric_pattern_07",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/fabric_pattern_07/fabric_pattern_07_ao_1k.jpg"
+    }
+  ],
+  "changes": "Assets are unmodified. The application scales furniture to editable dimensions and may tint cloned materials at runtime.",
+  "licenseURLs": {
+    "CC0-1.0": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "CC-BY-4.0": "https://creativecommons.org/licenses/by/4.0/"
+  }
+}

@@ -1,0 +1,68 @@
+Roomcraft realistic assets
+
+chair.glb
+Wayfair, LLC (2020), Eric Chadwick
+License: CC0-1.0
+Source: https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/SheenChair
+
+marble-color.jpg
+Poly Haven contributors
+License: CC0-1.0
+Source: https://polyhaven.com/a/marble_01
+
+marble-normal.jpg
+Poly Haven contributors
+License: CC0-1.0
+Source: https://polyhaven.com/a/marble_01
+
+marble-roughness.jpg
+Poly Haven contributors
+License: CC0-1.0
+Source: https://polyhaven.com/a/marble_01
+
+oak-color.jpg
+Poly Haven contributors
+License: CC0-1.0
+Source: https://polyhaven.com/a/laminate_floor_02
+
+oak-normal.jpg
+Poly Haven contributors
+License: CC0-1.0
+Source: https://polyhaven.com/a/laminate_floor_02
+
+oak-roughness.jpg
+Poly Haven contributors
+License: CC0-1.0
+Source: https://polyhaven.com/a/laminate_floor_02
+
+plaster-color.jpg
+Poly Haven contributors
+License: CC0-1.0
+Source: https://polyhaven.com/a/plastered_wall_02
+
+plaster-normal.jpg
+Poly Haven contributors
+License: CC0-1.0
+Source: https://polyhaven.com/a/plastered_wall_02
+
+plaster-roughness.jpg
+Poly Haven contributors
+License: CC0-1.0
+Source: https://polyhaven.com/a/plastered_wall_02
+
+sofa.glb
+Darmstadt Graphics Group GmbH (2024), Eric Chadwick; original Fran Calvente (2021)
+License: CC-BY-4.0 (improvements); CC0-1.0 (original)
+Source: https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/SheenWoodLeatherSofa
+
+studio.hdr
+Poly Haven contributors
+License: CC0-1.0
+Source: https://polyhaven.com/a/brown_photostudio_02
+
+CC0: https://creativecommons.org/publicdomain/zero/1.0/
+CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+Assets are unmodified. Models may be resized and material tints adjusted at runtime. No creator endorsement is implied.
+
+garden-daylight.hdr — Green Point Park, Greg Zaal / Poly Haven (CC0-1.0). Source: https://polyhaven.com/a/green_point_park ; 2K HDR, unmodified.
+linen-normal.jpg and linen-weave.jpg — Poly Haven, Fabric Pattern 07 (CC0-1.0), 1K OpenGL normal and AO: https://polyhaven.com/a/fabric_pattern_07
