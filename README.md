@@ -2,6 +2,23 @@
 
 面向室内设计师的本地工作台。React19 / Vinext / Three.js，集成 Pascal Editor 1.1.4（MIT）。
 
+Roomcraft 原创代码采用 [MIT 许可证](LICENSE)。依赖、模型、图标和纹理各自保留上游许可与署名，详见 [开源来源](docs/reference-audit.md) 和 [三维素材署名](public/assets/realistic/NOTICE.txt)。随项目分发的 PDF.js worker 采用 [Apache-2.0](docs/licenses/pdfjs-Apache-2.0.txt)。
+
+### Windows x64 离线安装
+
+在 [GitHub Releases](https://github.com/kaizhang0506-bot/roomcraft/releases) 下载同一版本的源码、`roomcraft-windows-x64-offline.zip` 和 `SHA256SUMS.txt`。用 `Get-FileHash` 核对压缩包后，用 Windows 自带的 `tar.exe -xf` 分别解压到较短的目录。在一份新解压的源码中执行以下命令。示例假设依赖包解压到了 `C:\rc\deps`。
+
+先安装依赖包内 `tools\python-3.14.10-amd64.exe`，安装时选择 pip 和 venv。如果已有标准 64 位 CPython 3.14，可直接使用。安装脚本会从包内解压独立 Node.js、New Era、House 户型识别器和 Roomsmith 绘图组件，并用本地缓存安装 npm 与 Python 依赖。
+
+```powershell
+.\scripts\install-windows-offline.ps1 -BundlePath C:\rc\deps -PythonExe python
+Copy-Item .env.example .dev.vars
+.\scripts\start-local-services.ps1 -NewEraExecutable $env:NEWERA_EXECUTABLE
+npm.cmd run dev
+```
+
+已有本地配置可跳过复制示例文件。重新打开 PowerShell 后，从项目根目录执行 `.\scripts\use-windows-offline.ps1` 即可恢复该会话的工具路径。CPU 识别和编辑可在本机使用。云端 AI 生图与视觉识别需要联网，并需要在自己的服务端配置 API 密钥。GitHub Actions Secrets 仅供获授权的工作流使用，本地开发读取 `.dev.vars`。
+
 ## 已接入
 
 - 图片/PDF/DXF/项目JSON导入；CPU 几何识别与真实视觉模型识别，可手工校正墙体、门窗、房间多边形、比例与层高。
